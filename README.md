@@ -1,69 +1,124 @@
-<img align="right" width="150" alt="logo" src="https://user-images.githubusercontent.com/5889006/190859553-5b229b4f-c476-4cbd-928f-890f5265ca4c.png">
+### Marcial-blog · 用键帽敲下的生活火花
 
-# Hugo Theme Stack Starter Template
+> 写代码、写字、写下和世界击掌的瞬间。
 
-This is a quick start template for [Hugo theme Stack](https://github.com/CaiJimmy/hugo-theme-stack). It uses [Hugo modules](https://gohugo.io/hugo-modules/) feature to load the theme.
-
-It comes with a basic theme structure and configuration. GitHub action has been set up to deploy the theme to a public GitHub page automatically. Also, there's a cron job to update the theme automatically everyday.
-
-## Get started
-
-1. Click *Use this template*, and create your repository as `<username>.github.io` on GitHub.
-![Step 1](https://user-images.githubusercontent.com/5889006/156916624-20b2a784-f3a9-4718-aa5f-ce2a436b241f.png)
-
-2. Once the repository is created, create a GitHub codespace associated with it.
-![Create codespace](https://user-images.githubusercontent.com/5889006/156916672-43b7b6e9-4ffb-4704-b4ba-d5ca40ffcae7.png)
-
-3. And voila! You're ready to go. The codespace has been configured with the latest version of Hugo extended, just run `hugo server` in the terminal and see your new site in action.
-
-4. Check `config` folder for the configuration files. You can edit them to suit your needs. Make sure to update the `baseurl` property in `config/_default/config.toml` to your site's URL.
-
-5. Open Settings -> Pages. Change the build branch from `master` to `gh-pages`.
-![Build](https://github.com/namanh11611/hugo-theme-stack-starter/assets/16586200/12c763cd-bead-4923-b610-8788f388fcb5)
-
-6. Once you're done editing the site, just commit it and push it. GitHub action will deploy the site automatically to GitHub page asociated with the repository.
-![GitHub action](https://user-images.githubusercontent.com/5889006/156916881-90b8bb9b-1925-4e60-9d7a-8026cda729bf.png)
+- **框架**: Hugo（Theme: `CaiJimmy/hugo-theme-stack`）
+- **定位**: 记录编程学习与日常感悟的个人博客
+- **在线**: 参考下方部署章节（支持 GitHub Pages）
 
 ---
 
-In case you don't want to use GitHub codespace, you can also run this template in your local machine. **You need to install Git, Go and Hugo extended locally.**
+## 亮点速览
+- **极速**: 纯静态构建，打开就像 Ctrl+P
+- **专注**: 极简侧边栏 + 目录 + 暗色切换
+- **可写**: Markdown 写作，前置参数即所见即所得
 
-## Update theme manually
+---
 
-Run:
+## 快速开始
 
 ```bash
-hugo mod get -u github.com/CaiJimmy/hugo-theme-stack/v3
-hugo mod tidy
+# 1) 本地预览
+hugo server -D
+# 打开: http://localhost:1313/my-blog/
+
+# 2) 生成静态文件
+hugo
+# 输出在 public/
 ```
 
-> This starter template has been configured with `v3` version of theme. Due to the limitation of Go module, once the `v4` or up version of theme is released, you need to update the theme manually. (Modifying `config/module.toml` file)
+---
 
-## Deploy to another static page hostings
+## 写作指南（最常用）
 
-If you want to build this site using another static page hosting, you need to make sure they have Go installed in the machine. 
-
-<details>
-  <summary>Vercel</summary>
-  
-You need to overwrite build command to install manually Go:
-
+- **新文章**（示例）
+```bash
+hugo new post/hello-world.md
 ```
-amazon-linux-extras install golang1.11 && hugo --gc --minify
+- **Front Matter 最小示例**
+```toml
+---
+title: "Hello World"
+date: 2025-09-04T00:00:00+08:00
+draft: false
+---
+```
+- **资源引用**
+  - 图片放 `static/` 后，用绝对路径：`/my-blog/your-image.png`（见“子路径与头像”）
+  - 或使用短代码：`{{< figure src="/my-blog/your-image.png" alt="描述" >}}`
+
+---
+
+## 子路径与头像（重要）
+
+- 本站 `baseurl` 配置为：
+```toml
+baseurl = "https://marcial-w.github.io/my-blog/"
+```
+这意味着站点运行在子路径 `/my-blog/` 下。
+
+- 头像放置：`static/profile.png`
+- 主题参数在 `config/_default/params.toml`：
+```toml
+[sidebar.avatar]
+enabled = true
+local = false
+src = "/my-blog/profile.png"
+```
+- 如以后站点迁移到根路径（例如 `https://example.com/`），请将 `src` 改回：
+```toml
+src = "/profile.png"
 ```
 
-![](https://user-images.githubusercontent.com/5889006/156917172-01e4d418-3469-4ffb-97e4-a905d28b8424.png)
+---
 
-If you are using Node.js 20, you need to overwrite the install command to install manually Go:
+## 目录结构一眼懂
+- `content/`：文章与页面
+- `static/`：静态资源（图片、图标、下载文件）
+- `assets/`：若使用 Hugo 资源管线（SCSS、图像处理）
+- `config/_default/`：站点配置（含 `params.toml`、`config.toml`）
+- `public/`：构建产物（自动生成）
 
-```
-dnf install -y golang
-```
+---
 
-![image](https://github.com/zhi-yi-huang/hugo-theme-stack-starter/assets/83860323/777c1109-dfc8-4893-9db7-1305ec027cf5)
+## 部署到 GitHub Pages（模块化懒人版）
 
+1. 确保 `config/_default/config.toml` 中的 `baseurl` 指向你的仓库 Pages 地址：
+   - `https://<username>.github.io/<repo>/`
+2. 构建：`hugo`
+3. 将 `public/` 的内容推送到 Pages 分支（如 `gh-pages`），或使用 GitHub Actions 自动化。
 
-Make sure also to specify Hugo version in the environment variable `HUGO_VERSION` (Use the latest version of Hugo extended):
+---
 
-![Environment variable](https://user-images.githubusercontent.com/5889006/156917212-afb7c70d-ab85-480f-8288-b15781a462c0.png)
-</details>
+## 主题与版本
+- Theme: `github.com/CaiJimmy/hugo-theme-stack/v3`
+- 当前依赖见 `go.mod`
+
+> 温馨提示：Hugo 自 v0.143.0 起，内置 `gist` 短代码已弃用。若旧文使用：
+> - 参考官方说明迁移（用自定义短代码或直接嵌入脚本）。
+
+---
+
+## 常见问题（FAQ）
+- **本地图片 404？**
+  - 先确认放在 `static/`；
+  - 运行在子路径时，用 `src="/my-blog/xxx.png"`；
+  - 部署在根路径则用 `src="/xxx.png"`。
+- **头像不显示？**
+  - 见“子路径与头像”，确认 `local=false` 且 `src` 含子路径前缀。
+- **中文排版**
+  - 已启用 `hasCJKLanguage = true`，统计与摘要更准确。
+
+---
+
+## 许可
+- 代码：见 `LICENSE`
+- 文章与图片：默认保留作者所有权，转载请注明出处。
+
+---
+
+## 致谢
+- Hugo 与 Stack 主题作者
+- 每一位打开本博客的你
+
+> 写字如写程序：一次提交，持续集成。愿你在这里发现灵感的断点。 
