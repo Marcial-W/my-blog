@@ -1,5 +1,5 @@
 # Change baseurl before deploy
-baseurl = "https://marcial_blog.com"
+baseurl = "https://marcial-w.github.io/my-blog/"
 languageCode = "zh-cn"
 title = "Marcial-blog"
 
