@@ -49,26 +49,6 @@ draft: false
 
 ---
 
-## 子路径与头像（重要）
-
-- 本站 `baseurl` 配置为：
-```toml
-baseurl = "https://marcial-w.github.io/my-blog/"
-```
-这意味着站点运行在子路径 `/my-blog/` 下。
-
-- 头像放置：`static/profile.png`
-- 主题参数在 `config/_default/params.toml`：
-```toml
-[sidebar.avatar]
-enabled = true
-local = false
-src = "/my-blog/profile.png"
-```
-- 如以后站点迁移到根路径（例如 `https://example.com/`），请将 `src` 改回：
-```toml
-src = "/profile.png"
-```
 
 ---
 
