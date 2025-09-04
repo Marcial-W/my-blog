@@ -18,8 +18,8 @@ subtitle = "The Omniscient Fool | The Corrupt Sage"
 
 [sidebar.avatar]
 enabled = true
-local = true
-src = "img/avatar.png"
+local = false
+src = "/my-blog/profile.png"
 
 [article]
 headingAnchor = false
