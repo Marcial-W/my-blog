@@ -5,15 +5,15 @@ rssFullContent = true
 favicon = "/favicon.png"
 
 [footer]
-since = 2020
-customText = ""
+since = 202509
+customText = "永不言败的家伙"
 
 [dateFormat]
-published = "Jan 02, 2006"
-lastUpdated = "Jan 02, 2006 15:04 MST"
+published = "2006年01月02日"
+lastUpdated = "2006年01月02日 15:04"
 
 [sidebar]
-emoji = "🍥"
+emoji = "ಠ_ಠ"
 subtitle = "The Omniscient Fool | The Corrupt Sage"
 
 [sidebar.avatar]
@@ -22,8 +22,8 @@ local = false
 src = "/my-blog/profile.png"
 
 [article]
-headingAnchor = false
-math = false
+headingAnchor = true
+math = true
 readingTime = true
 
 [article.license]
@@ -56,7 +56,7 @@ limit = 10
 type = "toc"
 
 [opengraph.twitter]
-site = ""
+site = "@Marcial"
 card = "summary_large_image"
 
 [defaultImage.opengraph]
@@ -77,7 +77,7 @@ enabled = true
 ## Comments
 [comments]
 enabled = true
-provider = "disqus"
+provider = "giscus"
 
 [comments.disqusjs]
 shortname = ""
@@ -128,13 +128,13 @@ serverName = "cactus.chat"
 siteName = ""
 
 [comments.giscus]
-repo = ""
-repoID = ""
-category = ""
-categoryID = ""
-mapping = ""
-lightTheme = ""
-darkTheme = ""
+repo = "Marcial-W/my-blog"
+repoID = "R_kgDOPpkpCg"
+category = "Announcements"
+categoryID = "DIC_kwDOPpkpCs4Cu-DZ"
+mapping = "pathname"
+lightTheme = "light"
+darkTheme = "dark"
 reactionsEnabled = 1
 emitMetadata = 0
 

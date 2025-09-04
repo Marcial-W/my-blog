@@ -1,6 +1,12 @@
 # Rename this file to languages.toml to enable multilingual support
+[zh-cn]
+languageName = "简体中文"
+languagedirection = "ltr"
+title = "Marcial-博客"
+weight = 1
+
 [en]
 languageName = "English"
 languagedirection = "ltr"
-title = "Example Site"
-weight = 1
+title = "Marcial-blog"
+weight = 2
